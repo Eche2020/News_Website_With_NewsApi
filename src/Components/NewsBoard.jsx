@@ -8,7 +8,12 @@ const NewsBoard = ({category}) => {
 		let url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${
 			import.meta.env.VITE_API_KEY
             }`;
-        fetch(url)
+        fetch(url, 
+	{
+  	headers: {		
+    		'Upgrade-Insecure-Requests': '1'		
+  		}
+	})
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status:${response.status}`);
